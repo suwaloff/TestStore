@@ -1,0 +1,38 @@
+﻿@model TestStore.Models.Brand
+
+<form method="post" asp-action="Delete">
+
+    
+
+    <div class="form-group row  py-4 " >
+        <h2 class="text-dark col-8 offset-3"> Удаление Brand </h2>
+    </div>
+    <div  class="row" >
+        <div class="col-8">
+            <div class="form-group row py-2">
+                <div class="col-4">
+                   
+                </div>
+                <div class="col-8">
+                    <input asp-for="name" disabled class="form-control" />
+
+                </div>
+
+            </div>
+            <p>&nbsp;</p>
+            <div class="form-group row py-2">
+                <div class="col-8 offset-4 row">
+
+                    <div class="col">
+                        <input type="submit" class="btn btn-info w-100 btn btn-danger" value="Подтвердить" />
+                    </div>
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-success w-100 btn-dark"><i class="fas fa-sign-out-alt"></i> Назад</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</form>

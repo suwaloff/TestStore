@@ -1,0 +1,22 @@
+﻿@model TestStore.Models.ViewModels.HomeVM
+
+<div class="container">
+    <div class="text-center">
+        <button class="btn btn-danger filter-button" data-filter="all">ALL</button>
+        @foreach (var obj in Model.Categories)
+        {
+            <button class="btn btn-danger filter-button" data-filter="@obj.Name.Replace(' ','_')">
+                @obj.Name
+            </button>
+        }
+    </div>
+    <br/>
+    <div class="row">
+        @foreach (var prod in Model.Products)
+       {
+           <partial name="_ProductCard" model="prod"/>
+
+       }
+    </div>
+   
+</div>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TestStore.Models.Brand>   // получаем список по пути  TestStore.Models.Category. теперь можем с ним работать
+
+<div class="contaier p-3">
+    <div class=" row p-4">
+        <div class="col-6">
+            <h2 class="text-dark">Brand List</h2>
+            </div>
+            <div class="col -6 text-right">
+            <a  asp-action="Create" class="btn btn-dark">
+                Create New Brand
+            </a>
+            </div>
+    </div>
+
+    <br/><br/>
+    @if(Model.Count() > 0)     // синтаксис RAZOR для использования C# и HTML
+    {
+        <table class="table table-bordered table -striped" style="width:100">
+            <thead>
+                <tr>
+                    <th>
+                         Name
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var obj in Model)
+                {
+                    <tr>
+                        <td width="50%">@obj.name</td>
+                        <td class="text-center">
+                            <div class="w-80 btn-group" role="group">
+                                <a asp-controller="Brand" asp-route-Id="@obj.Id" asp-action="Edit" class="btn btn-dark mx-md-2">
+                                    Редактировать
+                                </a>
+
+                                <a asp-controller="Brand" asp-route-Id="@obj.Id" asp-action="Delete" class="btn btn-danger ">
+                                    <i class="fa-solid fa-trash-can"></i>  @*Удалить*@
+                                </a>
+                            </div>
+
+                        </td>
+                        <td></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        
+    }
+    else
+    {
+        <p> NO Application type EXISTS.</p>
+    }
+</div>
