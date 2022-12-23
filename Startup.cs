@@ -29,7 +29,15 @@ namespace TestStore
             //string connection = Configuration.GetConnectionString("DefaultConnection");
             // добавляем контекст ApplicationDBContext в качестве сервиса в приложение
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
-                Configuration.GetConnectionString("DefaultConnection")));     
+                Configuration.GetConnectionString("DefaultConnection")));
+            services.AddHttpContextAccessor();
+            
+            services.AddSession(Options =>
+            {
+                Options.IdleTimeout = TimeSpan.FromMinutes(10);
+                Options.Cookie.HttpOnly = true;
+                Options.Cookie.IsEssential = true;
+            });
             services.AddControllersWithViews();
         }
 
@@ -55,6 +63,8 @@ namespace TestStore
             app.UseRouting();                     //  вкл и настройка маршрутизация (MVC,RAZOR... выбирает шаблон 
 
             app.UseAuthorization();              // включаем авторизацию 
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
