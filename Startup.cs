@@ -22,7 +22,7 @@ namespace TestStore
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        
         public void ConfigureServices(IServiceCollection services)
         {
             // получаем строку подключения из файла конфигурации
@@ -46,7 +46,7 @@ namespace TestStore
         {
             //контейнер с последовательным запуском пргомежуточных компонентов ...
 
-            if (env.IsDevelopment())     // проверяем режим запуска приложения 
+            if (env.IsDevelopment())     //  режим запуска приложения 
             {
                 app.UseDeveloperExceptionPage();  // развернутый компонент анализа исключения 
             }
@@ -58,20 +58,20 @@ namespace TestStore
             }
             app.UseHttpsRedirection();                // переход на защищенное соединение 
 
-            app.UseStaticFiles();                   // получаем доступ к статическим файлам 
+            app.UseStaticFiles();                   //  доступ к статическим файлам 
 
-            app.UseRouting();                     //  вкл и настройка маршрутизация (MVC,RAZOR... выбирает шаблон 
+            app.UseRouting();                     // настройка маршрутизация  
 
-            app.UseAuthorization();              // включаем авторизацию 
+            app.UseAuthorization();              //  авторизация 
 
             app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(        // включаем  точки входа MVC 
+                endpoints.MapControllerRoute(        
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                          // HOME- указывает на контроллер INDEX- на метод конторллера (если нету спользует метод по умолчанию)
+                          
             });
         }
     }

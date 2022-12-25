@@ -1,6 +1,4 @@
-﻿@model IEnumerable<TestStore.Models.Category>   // получаем список по пути  TestStore.Models.Category. теперь можем с ним работать 
-
-<div class="contaier p-3">
+﻿@model IEnumerable<TestStore.Models.Category>   
     <div class=" row p-4">
         <div class="col-6">
         <h2 class="text-dark">Список категорий</h2>
@@ -13,7 +11,7 @@
     </div>
 
     <br/><br/>
-    @if(Model.Count() > 0)     // синтаксис RAZOR для использования C# и HTML
+    @if(Model.Count() > 0)     
     {
         <table class="table table-bordered table -striped" style="width:100%">
             <thead>
